@@ -10,3 +10,15 @@ D:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.c
 D:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.dll
 D:\cs\New-Reactivities\Domain\obj\Debug\net6.0\ref\Domain.dll
 D:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.pdb
+E:\cs\New-Reactivities\Domain\bin\Debug\net6.0\Domain.deps.json
+E:\cs\New-Reactivities\Domain\bin\Debug\net6.0\Domain.dll
+E:\cs\New-Reactivities\Domain\bin\Debug\net6.0\ref\Domain.dll
+E:\cs\New-Reactivities\Domain\bin\Debug\net6.0\Domain.pdb
+E:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+E:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+E:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+E:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+E:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.dll
+E:\cs\New-Reactivities\Domain\obj\Debug\net6.0\ref\Domain.dll
+E:\cs\New-Reactivities\Domain\obj\Debug\net6.0\Domain.pdb

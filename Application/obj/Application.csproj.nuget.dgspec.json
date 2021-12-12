@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\cs\\New-Reactivities\\Application\\Application.csproj": {}
+    "E:\\cs\\New-Reactivities\\Application\\Application.csproj": {}
   },
   "projects": {
-    "D:\\cs\\New-Reactivities\\Application\\Application.csproj": {
+    "E:\\cs\\New-Reactivities\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\cs\\New-Reactivities\\Application\\Application.csproj",
+        "projectUniqueName": "E:\\cs\\New-Reactivities\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\cs\\New-Reactivities\\Application\\Application.csproj",
+        "projectPath": "E:\\cs\\New-Reactivities\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\cs\\New-Reactivities\\Application\\obj\\",
+        "outputPath": "E:\\cs\\New-Reactivities\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\cs\\New-Reactivities\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\cs\\New-Reactivities\\Domain\\Domain.csproj"
+              "E:\\cs\\New-Reactivities\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\cs\\New-Reactivities\\Domain\\Domain.csproj"
               },
-              "D:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj": {
-                "projectPath": "D:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj"
+              "E:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj": {
+                "projectPath": "E:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj"
               }
             }
           }
@@ -79,14 +79,14 @@
         }
       }
     },
-    "D:\\cs\\New-Reactivities\\Domain\\Domain.csproj": {
+    "E:\\cs\\New-Reactivities\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\cs\\New-Reactivities\\Domain\\Domain.csproj",
+        "projectUniqueName": "E:\\cs\\New-Reactivities\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\cs\\New-Reactivities\\Domain\\Domain.csproj",
+        "projectPath": "E:\\cs\\New-Reactivities\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\cs\\New-Reactivities\\Domain\\obj\\",
+        "outputPath": "E:\\cs\\New-Reactivities\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -137,14 +137,14 @@
         }
       }
     },
-    "D:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj": {
+    "E:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "E:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "D:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj",
+        "projectPath": "E:\\cs\\New-Reactivities\\Persistence\\Persistence.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\cs\\New-Reactivities\\Persistence\\obj\\",
+        "outputPath": "E:\\cs\\New-Reactivities\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -165,8 +165,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\cs\\New-Reactivities\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\cs\\New-Reactivities\\Domain\\Domain.csproj"
+              "E:\\cs\\New-Reactivities\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\cs\\New-Reactivities\\Domain\\Domain.csproj"
               }
             }
           }
