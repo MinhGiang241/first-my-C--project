@@ -7,8 +7,9 @@ import { useStore } from "../../../app/stores/store";
 import ActivityFilters from "./ActivityFilters";
 import ActivityList from "./ActivityList";
 import ActivityListItemPlaceholder from "./ActivityListItemPlaceholder";
+import { Activity } from "./../../../app/model/activity";
 
-export default observer(function ActivityDashboard(props: any) {
+export default observer(function ActivityDashboard({ activities }: any) {
   const { activityStore } = useStore();
   const { loadActivities, activityRegistry, setPagingParams, pagination } =
     activityStore;
