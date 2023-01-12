@@ -1,20 +1,18 @@
-import React, { ChangeEvent, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { observer } from "mobx-react-lite";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Form, Segment } from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
+import { useStore } from "../../../app/stores/store";
+import { v4 as uuid } from "uuid";
 
-interface Props {
-  activity: Activity | undefined;
-  closeForm: () => void;
-  createOrEdit: (activity: Activity) => void;
-  submitting: boolean;
-}
-export default function ActivityForm({
-  activity: selectedActivity,
-  closeForm,
-  createOrEdit,
-  submitting,
-}: Props) {
-  const initState = selectedActivity ?? {
+export default observer(function ActivityForm() {
+  const navigate = useNavigate();
+  const { activityStore } = useStore();
+  const { loadActivity, createActivity, updateActivity, loading } =
+    activityStore;
+
+  const initState = {
     id: "",
     title: "",
     category: "",
@@ -26,8 +24,32 @@ export default function ActivityForm({
 
   const [activity, setActivity] = useState(initState);
 
+  const { id } = useParams<{ id: string }>();
+
+  useEffect(() => {
+    console.log(id);
+    if (id) {
+      loadActivity(id).then((act) => setActivity(act!));
+    } else {
+      setActivity(initState);
+    }
+  }, [id, loadActivity]);
+
   var handleSubmit = () => {
-    createOrEdit(activity);
+    if (activity.id.length === 0) {
+      let newActivity = {
+        ...activity,
+        id: uuid(),
+      };
+      createActivity(newActivity).then(() => {
+        navigate(`/activities/${newActivity.id}`);
+      });
+    } else {
+      updateActivity(activity).then(() =>
+        navigate(`/activities/${activity.id}`)
+      );
+    }
+    //  ? updateActivity(activity) : createActivity(activity);
   };
   var handleInputChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -76,7 +98,7 @@ export default function ActivityForm({
           onChange={handleInputChange}
         />
         <Button
-          loading={submitting}
+          loading={loading}
           floated="right"
           positive
           type="submit"
@@ -84,7 +106,8 @@ export default function ActivityForm({
           onChange={() => handleSubmit()}
         />
         <Button
-          onClick={() => closeForm()}
+          as={Link}
+          to="/activities"
           floated="right"
           type="button"
           content="Cancel"
@@ -92,4 +115,4 @@ export default function ActivityForm({
       </Form>
     </Segment>
   );
-}
+});
