@@ -16,13 +16,9 @@ export default observer(function ActivityList() {
           <Header sub color="teal">
             {group}
           </Header>
-          <Segment>
-            <Item.Group divided>
-              {activities.map((act: Activity) => (
-                <ActivityListItem act={act} />
-              ))}
-            </Item.Group>
-          </Segment>
+          {activities.map((act: Activity) => (
+            <ActivityListItem act={act} />
+          ))}
         </Fragment>
       ))}
     </>
