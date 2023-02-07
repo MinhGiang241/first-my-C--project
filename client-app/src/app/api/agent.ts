@@ -1,5 +1,9 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import {} from "react-router-dom";
+import { toast } from "react-toastify";
+import { history } from "../../index";
 import { Activity } from "../models/activity";
+import { store } from "../stores/store";
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => setTimeout(resolve, delay));
@@ -17,15 +21,49 @@ const requests = {
   del: <T>(url: string) => axios.delete<T>(url).then(responseBody),
 };
 
-axios.interceptors.response.use(async (response) => {
-  try {
+axios.interceptors.response.use(
+  async (response) => {
     await sleep(1000);
     return response;
-  } catch (err) {
-    console.log(err);
-    return await Promise.reject(err);
+  },
+  (error: AxiosError) => {
+    const { data, status, config } = error.response!;
+    switch (status) {
+      case 400:
+        toast.error((data as any) || "Bad request");
+        if (
+          config.method === "get" &&
+          (data as any).errors.hasOwnProperty("id")
+        ) {
+          history.push("/not-found");
+        } else {
+          toast.error((data as any) || "Bad request");
+        }
+        if ((data as any).errors) {
+          const modalStateErrors = [];
+          for (const key in (data as any).errors) {
+            modalStateErrors.push((data as any).errors[key]);
+          }
+          throw modalStateErrors.flat();
+        } else {
+          toast.error((data as any) || "Bad request");
+        }
+        break;
+      case 401:
+        toast.error("unauthorised");
+        break;
+      case 404:
+        history.push("/not-found");
+        break;
+      case 500:
+        store.commonStore.setServerError(data as any);
+        history.push("/server-error");
+        break;
+    }
+
+    return Promise.reject(error);
   }
-});
+);
 
 const Activities = {
   list: () => requests.get<Activity[]>("/activities"),
