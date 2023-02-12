@@ -13,21 +13,28 @@ import TestErrors from "../../features/errors/TestError";
 import { ToastContainer } from "react-toastify";
 import NotFound from "../../features/errors/NotFound";
 import ServerError from "../../features/errors/ServerError";
+import LoginForm from "../../features/users/LoginForm";
+import ModalContainer from "../common/modals/ModalContainer";
 
 function App() {
-  const { activityStore } = useStore();
+  const { commonStore, userStore } = useStore();
   const location = useLocation();
 
   useEffect(() => {
-    activityStore.loadActivities();
-  }, [activityStore]);
+    if (commonStore.token) {
+      userStore.getUser().finally(() => commonStore.setAppLoaded());
+    } else {
+      commonStore.setAppLoaded();
+    }
+  }, [commonStore, userStore]);
 
-  if (activityStore.loadingInitial)
-    return <LoadingComponent content="Loading app" />;
+  if (!commonStore.appLoaded)
+    return <LoadingComponent content="Loading activities..." />;
 
   return (
     <>
       <ToastContainer position="bottom-right" hideProgressBar />
+      <ModalContainer />
       <NavBar />
       <Container style={{ marginTop: "7em" }}>
         <Routes>
@@ -40,6 +47,7 @@ function App() {
           ))}
           <Route path="/errors" element={<TestErrors />} />
           <Route path="/server-error" element={<ServerError />} />
+          <Route path="/Login" element={<LoginForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>

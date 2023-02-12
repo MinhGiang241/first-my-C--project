@@ -1,19 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application;
 using Application.Activities;
 using Domain;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Persistence;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
     public class ActivitiesController : BaseApiController
     {
 
