@@ -12,25 +12,16 @@ import MyTextArea from "../../../app/common/form/MyTextArea";
 import MySelectInput from "../../../app/common/form/MySelectInput";
 import { categoryOptions } from "../../../app/common/options/categoryOptions";
 import MyDateInput from "../../../app/common/form/MyDateInput";
-import { Activity } from "../../../app/models/activity";
+import { Activity, ActivityFormValues } from "../../../app/models/activity";
 
 export default observer(function ActivityForm() {
   const navigate = useNavigate();
   const { activityStore } = useStore();
-  const { loadActivity, createActivity, updateActivity, loading } =
-    activityStore;
+  const { loadActivity, createActivity, updateActivity } = activityStore;
 
-  const initState = {
-    id: "",
-    title: "",
-    category: "",
-    description: "",
-    date: null,
-    city: "",
-    venue: "",
-  };
-
-  const [activity, setActivity] = useState<Activity>(initState);
+  const [activity, setActivity] = useState<ActivityFormValues>(
+    new ActivityFormValues()
+  );
 
   const { id } = useParams<{ id: string }>();
 
@@ -46,19 +37,21 @@ export default observer(function ActivityForm() {
   useEffect(() => {
     console.log(id);
     if (id) {
-      loadActivity(id).then((act) => setActivity(act!));
+      loadActivity(id).then((act) =>
+        setActivity(new ActivityFormValues(activity))
+      );
     } else {
-      setActivity(initState);
+      setActivity(new ActivityFormValues());
     }
   }, [id, loadActivity]);
 
-  var handleFormSubmit = (activity: Activity) => {
-    if (activity.id.length === 0) {
+  var handleFormSubmit = (activity: ActivityFormValues) => {
+    if (!activity.id) {
       let newActivity = {
         ...activity,
         id: uuid(),
       };
-      createActivity(newActivity).then(() => {
+      createActivity(newActivity as Activity).then(() => {
         navigate(`/activities/${newActivity.id}`);
       });
     } else {
@@ -104,7 +97,7 @@ export default observer(function ActivityForm() {
             <MyTextInput placeholder="Venue" name="venue" />
             <Button
               disabled={isSubmitting || !dirty || !isValid}
-              loading={loading}
+              loading={isSubmitting}
               floated="right"
               positive
               type="submit"

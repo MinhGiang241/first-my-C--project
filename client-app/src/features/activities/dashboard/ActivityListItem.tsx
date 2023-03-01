@@ -1,8 +1,9 @@
 import { format } from "date-fns";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Icon, Item, Segment } from "semantic-ui-react";
+import { Button, Icon, Item, Label, Segment } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
+import ActivityListItemAttendee from "./ActivityListItemAttendee";
 interface Props {
   act: Activity;
 }
@@ -11,14 +12,43 @@ export default function ActivityListItem({ act }: Props) {
   return (
     <Segment.Group>
       <Segment>
+        {act.isCancel && (
+          <Label
+            attached="top"
+            color="red"
+            content="Canceled"
+            style={{ textAlign: "center" }}
+          ></Label>
+        )}
         <Item.Group>
           <Item>
-            <Item.Image size="tiny" circular src="/assets/user.png" />
+            <Item.Image
+              style={{ marginBottom: 4 }}
+              size="tiny"
+              circular
+              src="/assets/user.png"
+            />
             <Item.Content>
               <Item.Header as={Link} to={`/activities/${act.id}`}>
                 {act.title}
               </Item.Header>
-              <Item.Description>Hosted by Minh Giang</Item.Description>
+              <Item.Description>
+                Hosted by {act.host?.displayName}
+              </Item.Description>
+              {act.isHost && (
+                <Item.Description>
+                  <Label basic color="orange">
+                    You are hosting this activity
+                  </Label>
+                </Item.Description>
+              )}
+              {act.isGoing && !act.isHost && (
+                <Item.Description>
+                  <Label basic color="green">
+                    You are going to this activity
+                  </Label>
+                </Item.Description>
+              )}
             </Item.Content>
           </Item>
         </Item.Group>
@@ -31,7 +61,9 @@ export default function ActivityListItem({ act }: Props) {
           {act.venue}
         </span>
       </Segment>
-      <Segment>Attendees go here</Segment>
+      <Segment>
+        <ActivityListItemAttendee attendees={act.attendees!} />
+      </Segment>
       <Segment clearing>
         <span>{act.description}</span>
         <Button

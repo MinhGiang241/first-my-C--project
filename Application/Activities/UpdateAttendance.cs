@@ -34,12 +34,12 @@ namespace Application.Activities
                     .SingleOrDefaultAsync(x => x.Id == request.Id);
 
                 if (activity == null) return null;
-                var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == _userAccessor.Getusername());
                 if (user == null) return null;
-                var hostUserName = activity.Attendees.FirstOrDefault(x => x.IsHost)?.AppUser?.UserName;
+                var hostusername = activity.Attendees.FirstOrDefault(x => x.IsHost)?.AppUser?.UserName;
                 var attendance = activity.Attendees.FirstOrDefault(x => x.AppUser.UserName == user.UserName);
-                if (attendance != null && hostUserName == user.UserName) activity.IsCancelled = !activity.IsCancelled;
-                if (attendance != null && hostUserName != user.UserName) activity.Attendees.Remove(attendance);
+                if (attendance != null && hostusername == user.UserName) activity.IsCancelled = !activity.IsCancelled;
+                if (attendance != null && hostusername != user.UserName) activity.Attendees.Remove(attendance);
                 if (attendance == null)
                 {
                     attendance = new ActivityAttendee

@@ -41,7 +41,7 @@ export default observer(function RegisterForm() {
             textAlign="center"
           />
           <MyTextInput name="displayName" placeholder="Display Name" />
-          <MyTextInput name="username" placeholder="Username" />
+          <MyTextInput name="username" placeholder="username" />
           <MyTextInput name="email" placeholder="Email" />
           <MyTextInput name="password" placeholder="Password" type="password" />
           <ErrorMessage
