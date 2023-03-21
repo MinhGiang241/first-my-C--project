@@ -1,12 +1,13 @@
 import { ActivityFormValues } from "./../models/activity";
 import { UserFormValues } from "./../models/user";
 import axios, { AxiosError, AxiosHeaders, AxiosResponse } from "axios";
-import {} from "react-router-dom";
+import { } from "react-router-dom";
 import { toast } from "react-toastify";
 import { history } from "../../index";
 import { Activity } from "../models/activity";
 import { User } from "../models/user";
 import { store } from "../stores/store";
+import { Profile } from "../models/profile";
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => setTimeout(resolve, delay));
@@ -93,9 +94,14 @@ const Account = {
     requests.post<User>("account/register", user),
 };
 
+const Profiles = {
+  get: (username: string) => requests.get<Profile>(`/profile/${username}`)
+}
+
 const agent = {
   Activities,
   Account,
+  Profiles
 };
 
 export default agent;

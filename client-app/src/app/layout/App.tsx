@@ -15,6 +15,7 @@ import NotFound from "../../features/errors/NotFound";
 import ServerError from "../../features/errors/ServerError";
 import LoginForm from "../../features/users/LoginForm";
 import ModalContainer from "../common/modals/ModalContainer";
+import ProfilePage from "../../features/profiles/ProfilePage";
 
 function App() {
   const { commonStore, userStore } = useStore();
@@ -45,6 +46,7 @@ function App() {
           {["/createActivity", "/manage/:id"].map((path) => (
             <Route key={location.key} path={path} element={<ActivityForm />} />
           ))}
+          <Route path="/profile/:username" element={<ProfilePage />} />
           <Route path="/errors" element={<TestErrors />} />
           <Route path="/server-error" element={<ServerError />} />
           <Route path="/Login" element={<LoginForm />} />
