@@ -46,7 +46,7 @@ function App() {
           {["/createActivity", "/manage/:id"].map((path) => (
             <Route key={location.key} path={path} element={<ActivityForm />} />
           ))}
-          <Route path="/profile/:username" element={<ProfilePage />} />
+          <Route path="/profiles/:username" element={<ProfilePage />} />
           <Route path="/errors" element={<TestErrors />} />
           <Route path="/server-error" element={<ServerError />} />
           <Route path="/Login" element={<LoginForm />} />

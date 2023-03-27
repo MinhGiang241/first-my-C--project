@@ -40,7 +40,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteActivity(Guid id)
         {
-            return Ok(await Mediator.Send(new Delete.Command { Id = id }));
+            return base.Ok(await Mediator.Send<Application.Core.Result<MediatR.Unit>>(new Application.Delete.Command { Id = id }));
         }
         [HttpPost("{id}/attend")]
         public async Task<IActionResult> Attend(Guid id)
