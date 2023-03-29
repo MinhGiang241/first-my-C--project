@@ -54,7 +54,7 @@ export default observer(function ProfilePhotos({ profile }: Props) {
                       <Button
                         basic
                         name={photo.id}
-                        loading={target == photo.id && loading}
+                        loading={target === photo.id && loading}
                         disabled={photo.isMain}
                         onClick={e => handleDeletePhoto(photo, e)}
                         color='red'
